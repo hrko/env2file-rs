@@ -107,10 +107,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
 
     if let Some(command) = std::env::args().nth(1) {
-        let error = Command::new(command)
-            .args(std::env::args().skip(2))
-            .envs(env::vars())
-            .exec();
+        let error = Command::new(command).args(std::env::args().skip(2)).exec();
         eprintln!("Failed to execute command: {}", error);
     }
 
