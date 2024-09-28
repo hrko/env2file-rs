@@ -21,8 +21,10 @@ jobs:
       - name: Install Zig for cross-compilation
         run: |
           ZIG_VERSION=0.13.0
-          wget https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz -O - | tar -xJf - -C /usr/local
-          echo "/usr/local/zig-linux-x86_64-${ZIG_VERSION}/" >> $GITHUB_PATH
+          INSTALL_DIR=$HOME/.local
+          mkdir -p $INSTALL_DIR
+          curl -sSfL https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz | tar -xJf - -C $INSTALL_DIR
+          echo "$INSTALL_DIR/zig-linux-x86_64-${ZIG_VERSION}/" >> $GITHUB_PATH
 
       - name: Install Task
         uses: arduino/setup-task@v2
