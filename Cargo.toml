@@ -1,0 +1,13 @@
+[package]
+name = "env2file-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0.210", features = ["derive"] }
+serde_json = "1.0.128"
+users = "0.11.0"
+
+[[bin]]
+name = "env2file-rs"
+path = "main.rs"
